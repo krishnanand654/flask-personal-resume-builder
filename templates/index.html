@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ resume.name }} - Resume</title>
+    {% if color %}
+    <style>
+    .subsection h4 {
+       color:#4472c4;
+    }
+    </style>
+    {% endif %}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0 30px 30px;
+        font-size: 12px;
+      }
+      .section {
+        margin-bottom: 10px;
+      }
+      .section h3 {
+        margin-bottom: 10px;
+        background-color: #f2f2f2;
+        padding: 2px;
+      }
+      .subsection {
+        margin-bottom: 10px;
+      }
+      .subsection p {
+        line-height: 16px;
+      }
+      .subsection h4 {
+        margin-bottom: 2px;
+      }
+      .subsection ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      .subsection ul li {
+        margin-bottom: 5px;
+      }
+      .about {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      .links {
+        display: flex;
+        gap: 10px;
+      }
+      .tech-stack {
+        line-height: 18px;
+      }
+
+      ul {
+        list-style-type: none; /* Removes default list styles */
+        padding: 0; /* Removes default padding */
+      }
+
+      li::before {
+        content: "- "; /* Custom marker */
+        color: #007bff; /* Optional: Change marker color */
+      }
+      .flex-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .project-subsection p{
+        margin-bottom: 5px;
+      }
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="about">
+        <h1>{{ resume.name }}</h1>
+        <p>{{ resume.city }}, {{ resume.state }}, {{ resume.zip_code }}</p>
+        <p>
+          {{ resume.phone }} | {{ resume.email }} |
+          <a href="https://{{ resume.linkedin }}" target="_blank"
+            >{{ resume.linkedin }}</a
+          >
+        </p>
+        <div class="links">
+          <p>
+            <a href="https://{{ resume.github }}" target="_blank"
+              >{{ resume.github }}</a
+            >
+          </p>
+          |
+          <p>
+            <a href="https://{{ resume.website }}" target="_blank"
+              >{{ resume.website }}</a
+            >
+          </p>
+          |
+          <p>
+            <a href="https://{{ resume.medium }}" target="_blank"
+              >{{ resume.medium }}</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Summary</h3>
+      <p style="text-align: justify">{{ resume.objective }}</p>
+    </div>
+
+    <div class="section">
+      <h3>Projects</h3>
+      {% for project in resume.projects %}
+      {% if two_page %}<div class="subsection project-subsection" > {% else %} <div class="subsection" >{% endif %}
+        <div style="display: flex; justify-content: space-between">
+          {% if two_page %}<h3 style="background: none; margin-bottom: 3px;">{{ project.title }} </h3> {% else %} <h4>{{ project.title }} </h4> {% endif %}
+          <p>{{ project.date }}</p>
+        </div>
+        <p style="width: 95%">
+          - {{ project.description }} 
+        </p>
+        <p><strong>Technologies:</strong> {{ project.technologies }}</p>
+        {% if two_page %}
+        <p><strong>Key Responsibilities:</strong>
+            <ul>
+            {% for responsibility in  project.responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+        </p>
+        {% endif %}
+      
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="section tech-stack">
+      <h3>Technical Skills</h3>
+      <p><strong>Languages:</strong> {{ resume.skills.languages }}</p>
+      <p><strong>Technologies:</strong> {{ resume.skills.technologies }}</p>
+      <p><strong>Tools:</strong> {{ resume.skills.tools }}</p>
+    </div>
+
+    <div class="section">
+      <h3>Soft Skills</h3>
+      
+        <p>{{ resume.soft_skills }}</p>
+      
+    </div>
+
+    <div class="section">
+      <h3>Education</h3>
+      {% for education in resume.education %}
+      <div
+        class="subsection"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <h4>{{ education.degree }}</h4>
+          <p>{{ education.university }} | {{ education.location }}</p>
+          <p>GPA: {{ education.gpa }}/10.00</p>
+        </div>
+        <div>
+          <p>{{ education.graduation }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="section">
+      <h3>Achievements & Certifications</h3>
+      <ul>
+        {% for achievement in resume.achievements %}
+        <div class="flex-container">
+          <li>{{ achievement.title }}</li>
+          <div>{{ achievement.date }}</div>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="section">
+      <h3>Blogs</h3>
+      <ul>
+        {% for blog in resume.blogs %}
+        <li>{{ blog }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Position of Responsibility</h3>
+      <ul>
+        {% for por in resume.position_of_responsibility %}
+        <div class="flex-container">
+          <li>{{ por.title }}</li>
+          <div>{{ por.date }}</div>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
