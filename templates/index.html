@@ -86,7 +86,16 @@
         margin-bottom: 5px;
       }
 
+      .print-button {
+    display: block; /* Display normally on screen */
+}
 
+/* CSS for print view */
+@media print {
+    .print-button {
+        display: none; /* Hide when printing */
+    }
+}
 
     </style>
   </head>
@@ -222,5 +231,6 @@
         {% endfor %}
       </ul>
     </div>
+    <button class="print-button" onclick="window.print()">Print</button>
   </body>
 </html>
