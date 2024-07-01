@@ -131,12 +131,12 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="summary">
       <h3>Summary</h3>
       <p style="text-align: justify">{{ resume.objective }}</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="project">
       <h3>Projects</h3>
       {% for project in resume.projects %}
       {% if two_page %}<div class="subsection project-subsection" > {% else %} <div class="subsection" >{% endif %}
@@ -162,21 +162,21 @@
       {% endfor %}
     </div>
 
-    <div class="section tech-stack">
+    <div class="section tech-stack" id="tech-stack">
       <h3>Technical Skills</h3>
       <p><strong>Languages:</strong> {{ resume.skills.languages }}</p>
       <p><strong>Technologies:</strong> {{ resume.skills.technologies }}</p>
       <p><strong>Tools:</strong> {{ resume.skills.tools }}</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="skills">
       <h3>Soft Skills</h3>
       
         <p>{{ resume.soft_skills }}</p>
       
     </div>
 
-    <div class="section">
+    <div class="section" id="education">
       <h3>Education</h3>
       {% for education in resume.education %}
       <div
@@ -199,7 +199,7 @@
       {% endfor %}
     </div>
 
-    <div class="section">
+    <div class="section" id="achievements">
       <h3>Achievements & Certifications</h3>
       <ul>
         {% for achievement in resume.achievements %}
@@ -210,7 +210,7 @@
         {% endfor %}
       </ul>
     </div>
-    <div class="section">
+    <div class="section" id="blogs">
       <h3>Blogs</h3>
       <ul>
         {% for blog in resume.blogs %}
@@ -219,7 +219,7 @@
       </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="por">
       <h3>Position of Responsibility</h3>
       <ul>
         {% for por in resume.position_of_responsibility %}
@@ -230,6 +230,36 @@
         {% endfor %}
       </ul>
     </div>
+    <div class="section" id="print">
     <button class="print-button" onclick="window.print()">Print</button>
+  </div>
   </body>
+  <script>
+    function loadSectionOrder() {
+    const sectionOrder = JSON.parse(localStorage.getItem('sectionOrder'));
+
+    if (!sectionOrder || sectionOrder.length === 0) {
+            sectionOrder = ["","summary", "projects", "tech-stack", "skills", "education", "achievements", "blogs", "por"];
+        }
+
+    sectionOrder.push('print')
+    if (sectionOrder) {
+        const sectionsContainer = document.body; // Adjust selector as per your structure
+
+        sectionOrder.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            console.log(`Attempting to load section '${sectionId}'`);
+            if (section) {
+                sectionsContainer.appendChild(section); // Append each section in the order
+            } else {
+                console.error(`Section with ID '${sectionId}' not found.`);
+            }
+        });
+    }
+}
+ 
+    window.onload = function() {
+        loadSectionOrder();
+    };
+</script>
 </html>

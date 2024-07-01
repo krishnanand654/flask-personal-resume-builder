@@ -55,6 +55,7 @@
       .links {
         display: flex;
         gap: 10px;
+        flex-wrap: wrap;
       }
       .tech-stack {
         line-height: 18px;
@@ -84,7 +85,31 @@
         margin-bottom: 5px;
       }
 
+      .section{
+        position: relative;
+        
+      }
 
+      .move-buttons{
+        position: relative;
+        top:-32px;
+        left:95%;
+        width: 62px;
+        height: 10px;
+      }
+
+      .adjust-btn{
+        transform: rotate(90deg);
+        font-size: 16px;
+        margin:0 5px 0;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .move-buttons{
+        left:85%;
+      }
+      }
+     
 
     </style>
   </head>
@@ -121,9 +146,13 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="summary">
       <h3>Summary</h3>
-      <button id="editSummary" onclick="editSkills('edit_summary')">Edit</button>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('summary')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('summary')">&gt;</button>
+      </div>
+      
       <p style="text-align: justify">{{ resume.objective }}</p>
       <div id="edit_summary" style="display: none;">
         <form action="/update" method="POST">
@@ -131,10 +160,15 @@
         <button type="submit">Add</button>
         </form>
     </div>
+    <button id="editSummary" onclick="editSkills('edit_summary')">Edit</button>
     </div>
 
-    <div class="section">
+    <div class="section" id="project">
       <h3>Projects</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('project')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('project')">&gt;</button>
+    </div>
       {% for project in resume.projects %}
       {% if two_page %}<div class="subsection project-subsection" > {% else %} <div class="subsection" >{% endif %}
         <div style="display: flex; justify-content: space-between">
@@ -157,20 +191,24 @@
       
       </div>
       {% endfor %}
+     
     </div>
 
-    <div class="section tech-stack">
+    <div class="section tech-stack" id="tech-stack">
       <h3>Technical Skills</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('tech-stack')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('tech-stack')">&gt;</button>
+    </div>
+      
+      <p><strong>Languages:</strong> {{ resume.skills.languages }}</p>
       <button id="editlang" onclick="editSkills('edit_languages')">Edit</button>
       <div id="edit_languages" style="display: none;">
         <form action="/update" method="POST">
         <input  name="language_edit" type="text" value="{{resume.skills.languages}}" />
         <button type="submit">Add</button>
         </form>
-
         </div>
-      <p><strong>Languages:</strong> {{ resume.skills.languages }}</p>
-
     
       <p><strong>Technologies:</strong> {{ resume.skills.technologies }}</p>
       <button id="edittechs" onclick="editSkills('edit_technologies')">Edit</button>
@@ -188,10 +226,15 @@
         <button type="submit">Add</button>
         </form>
     </div>
+    
     </div>
 
-    <div class="section">
-      <h3>Soft Skills</h3>       
+    <div class="section" id="skills">
+      <h3>Soft Skills</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('skills')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('skills')">&gt;</button>
+    </div>       
         <p>{{ resume.soft_skills }}</p>
       <button id="editSoftSkills" onclick="editSkills('edit_soft_skills')">Edit</button>
       <div id="edit_soft_skills" style="display: none;">
@@ -201,10 +244,15 @@
         </form>
         </div>
     </form>
+   
     </div>
 
-    <div class="section">
+    <div class="section" id="education">
       <h3>Education</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('education')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('education')">&gt;</button>
+    </div>
       {% for education in resume.education %}
       <div
         class="subsection"
@@ -224,10 +272,15 @@
         </div>
       </div>
       {% endfor %}
+     
     </div>
 
-    <div class="section">
+    <div class="section" id="achievements">
       <h3>Achievements & Certifications</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('achievements')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('achievements')">&gt;</button>
+    </div>
       <ul>
         {% for achievement in resume.achievements %}
         <div class="flex-container">
@@ -236,18 +289,29 @@
         </div>
         {% endfor %}
       </ul>
+     
     </div>
-    <div class="section">
+
+    <div class="section" id="blogs">
       <h3>Blogs</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('blogs')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('blogs')">&gt;</button>
+    </div>
       <ul>
         {% for blog in resume.blogs %}
         <li>{{ blog }}</li>
         {% endfor %}
       </ul>
+      
     </div>
 
-    <div class="section">
+    <div class="section" id="por">
       <h3>Position of Responsibility</h3>
+      <div class="move-buttons">
+        <button class="adjust-btn" onclick="moveSectionUp('por')">&lt;</button>
+        <button class="adjust-btn" onclick="moveSectionDown('por')">&gt;</button>
+    </div>
       <ul>
         {% for por in resume.position_of_responsibility %}
         <div class="flex-container">
@@ -256,6 +320,7 @@
         </div>
         {% endfor %}
       </ul>
+      
     </div>
   </body>
   <script>
@@ -268,5 +333,61 @@
         inputElement.style.display = 'none';
       }
     }
-  </script>
+ 
+    // Function to move section up
+    function moveSectionUp(sectionId) {
+        const section = document.getElementById(sectionId);
+        const previousSection = section.previousElementSibling;
+        if (previousSection) {
+            previousSection.parentNode.insertBefore(section, previousSection);
+            saveSectionOrder();
+        }
+    }
+
+    // Function to move section down
+    function moveSectionDown(sectionId) {
+        const section = document.getElementById(sectionId);
+        const nextSection = section.nextElementSibling;
+        if (nextSection) {
+            nextSection.parentNode.insertBefore(nextSection, section);
+            saveSectionOrder();
+        }
+    }
+
+ 
+    function saveSectionOrder() {
+        const sections = document.querySelectorAll('.section');
+        const sectionOrder = Array.from(sections).map(section => section.id);
+        localStorage.setItem('sectionOrder', JSON.stringify(sectionOrder));
+    }
+
+ 
+    function loadSectionOrder() {
+    const sectionOrder = JSON.parse(localStorage.getItem('sectionOrder'));
+
+    if (!sectionOrder || sectionOrder.length === 0) {
+            sectionOrder = ["","summary", "projects", "tech-stack", "skills", "education", "achievements", "blogs", "por"];
+        }
+
+    if (sectionOrder) {
+        const sectionsContainer = document.body; // Adjust selector as per your structure
+
+        sectionOrder.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            console.log(`Attempting to load section '${sectionId}'`);
+            if (section) {
+                sectionsContainer.appendChild(section); // Append each section in the order
+            } else {
+                console.error(`Section with ID '${sectionId}' not found.`);
+            }
+        });
+    }
+}
+
+
+    // Load initial section order when the page loads
+    window.onload = function() {
+        loadSectionOrder();
+    };
+</script>
 </html>

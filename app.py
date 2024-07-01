@@ -2,6 +2,7 @@ import json
 import os
 import firebase_admin
 import base64
+import requests
 from flask import Flask, render_template, jsonify, request, session, url_for,redirect
 from flask_login import LoginManager, login_user, login_required, UserMixin
 from dotenv import load_dotenv
@@ -10,14 +11,13 @@ from firebase_admin import db
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
-base64_service_account_key = os.getenv('FIREBASE_SERVICE_ACCOUNT_KEY_BASE64')
-service_account_key_json = base64.b64decode(base64_service_account_key).decode('utf-8')
-service_account_info = json.loads(service_account_key_json)
+service_account_key_json= os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY_URL")
+
+service_account_info = requests.get(service_account_key_json)
 
 app.db_url = os.getenv("DB_URL")
 
-
-cred_obj = firebase_admin.credentials.Certificate(service_account_info)
+cred_obj = firebase_admin.credentials.Certificate(service_account_info.json())
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL':app.db_url
 	})
@@ -75,9 +75,7 @@ def update():
     two_page = request.args.get('two_page')
     color = request.args.get('color')
     
-    with open('resume_data.json','r') as file_object:
-        resume_data = json.load(file_object)    
-  
+    resume_data = ref.get()
     resume_data['projects'] = sorted(resume_data['projects'], key=lambda x: x['date'], reverse=True)
 
     if request.method == 'POST':
