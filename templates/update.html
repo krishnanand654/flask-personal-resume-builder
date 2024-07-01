@@ -92,16 +92,24 @@
 
       .move-buttons{
         position: relative;
-        top:-32px;
+        top:-30px;
         left:95%;
         width: 62px;
         height: 10px;
+      }
+
+      button{
+        border:none;
+        color:#4472c4;
+        background-color: none;
+        cursor: pointer;
       }
 
       .adjust-btn{
         transform: rotate(90deg);
         font-size: 16px;
         margin:0 5px 0;
+       
       }
 
       @media only screen and (max-width: 600px) {
@@ -191,6 +199,37 @@
       
       </div>
       {% endfor %}
+
+      <button id="editProject" onclick="editSkills('edit_projects')">Edit</button>
+      <div id="edit_projects" style="display: none;">
+        {% for project in resume.projects %}
+        <div class="flex-container">
+            <li>
+                <form action="/update?section=project&index={{ loop.index }}" method="POST">
+                    <input type="text" name="title" value="{{ project.title }}" required>
+                    <input type="text" name="description" value="{{ project.description }}" required>
+                    <input type="text" name="technologies" value="{{ project.technologies }}" required>
+                    <input type="text" name="date" value="{{ project.date }}" required>
+                    <!-- <ul>
+                        {% for responsibility in project.responsibilities %}
+                        <li>
+                            <div>
+                                <input type="hidden" name="responsibility_index" value="{{ loop.index }}">
+                                <input type="text" name="responsibility" value="{{ responsibility }}">
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul> -->
+                    <div style="margin: 10px;">
+                        <button type="submit">Update</button>
+                    </div>
+                </form>
+            </li>
+        </div>
+        {% endfor %}
+        
+        </div>
+
      
     </div>
 
@@ -264,14 +303,34 @@
       >
         <div>
           <h4>{{ education.degree }}</h4>
-          <p>{{ education.university }} | {{ education.location }}</p>
-          <p>GPA: {{ education.gpa }}/10.00</p>
+          <p>{{ education.college }} | {{ education.university }} | {{ education.location }}</p>
+          <p>CGPA: {{ education.gpa }}/10.00</p>
         </div>
         <div>
           <p>{{ education.graduation }}</p>
         </div>
       </div>
       {% endfor %}
+
+      
+      <button id="editEducation" onclick="editSkills('edit_educations')">Edit</button>
+      <div id="edit_educations" style="display: none;">
+        {% for education in resume.education %}
+        <div class="flex-container">
+            <li>
+                <form action="/update?section=education&index={{ loop.index }}" method="POST">
+                    <input type="text" name="degree" value="{{ education.degree }}" required>
+                    <input type="text" name="college" value="{{ education.college }}" required>
+                    <input type="text" name="university" value="{{ education.university }}" required>
+                    <input type="text" name="location" value="{{ education.location }}" required>
+                    <input type="text" name="gpa" value="{{ education.gpa }}" required>
+                    <input type="text" name="graduation" value="{{ education.graduation }}" required>
+                    <button type="submit">Update</button>
+                </form>
+            </li>
+        </div>
+        {% endfor %}
+        </div>
      
     </div>
 
@@ -289,6 +348,21 @@
         </div>
         {% endfor %}
       </ul>
+
+      <button id="editAchievements" onclick="editSkills('edit_achievements')">Edit</button>
+      <div id="edit_achievements" style="display: none;">
+        {% for achievement in resume.achievements %}
+        <div class="flex-container">
+            <li>
+                <form action="/update?section=achievements&index={{ loop.index }}" method="POST">
+                    <input type="text" name="title" value="{{ achievement.title }}" required>
+                    <input type="text" name="date" value="{{ achievement.date }}" required>
+                    <button type="submit">Update</button>
+                </form>
+            </li>
+        </div>
+        {% endfor %}
+        </div>
      
     </div>
 
@@ -303,7 +377,19 @@
         <li>{{ blog }}</li>
         {% endfor %}
       </ul>
-      
+      <button id="editBlogs" onclick="editSkills('edit_blogs')">Edit</button>
+      <div id="edit_blogs" style="display: none;">
+      {% for blog in resume.blogs %}
+        <div class="flex-container">
+            <li>
+                <form action="/update?section=blogs&index={{ loop.index }}" method="POST">
+                    <input type="text" name="blog" value="{{ blog }}" required>
+                    <button type="submit">Update</button>
+                </form>
+            </li>
+        </div>
+        {% endfor %}
+        </div>
     </div>
 
     <div class="section" id="por">
@@ -320,7 +406,20 @@
         </div>
         {% endfor %}
       </ul>
-      
+      <button id="editPor" onclick="editSkills('edit_por')">Edit</button>
+      <div id="edit_por" style="display: none;">
+        {% for por in resume.position_of_responsibility %}
+        <div class="flex-container">
+            <li>
+                <form action="/update?section=por&index={{ loop.index }}" method="POST">
+                    <input type="text" name="title" value="{{ por.title }}" required>
+                    <input type="text" name="date" value="{{ por.date }}" required>
+                    <button type="submit">Update</button>
+                </form>
+            </li>
+        </div>
+        {% endfor %}
+        </div>
     </div>
   </body>
   <script>

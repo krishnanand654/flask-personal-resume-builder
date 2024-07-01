@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from firebase_admin import db
 
 app = Flask(__name__)
+app.debug=True
 app.secret_key = os.getenv("SECRET_KEY")
 
 service_account_key_json= os.getenv("FIREBASE_SERVICE_ACCOUNT_KEY_URL")
@@ -63,7 +64,7 @@ def index():
 
     resume_data = ref.get()
   
-    resume_data['projects'] = sorted(resume_data['projects'], key=lambda x: x['date'], reverse=True)
+    # resume_data['projects'] = sorted(resume_data['projects'], key=lambda x: x['date'], reverse=True)
 
     return render_template('index.html', resume=resume_data, two_page=two_page, color=color)
 
@@ -74,12 +75,18 @@ def index():
 def update():
     two_page = request.args.get('two_page')
     color = request.args.get('color')
+    if request.args.get('index'):
+        index = int(request.args.get('index'))
+
     
     resume_data = ref.get()
     resume_data['projects'] = sorted(resume_data['projects'], key=lambda x: x['date'], reverse=True)
 
     if request.method == 'POST':
+        
         data = request.form
+        section = request.args.get('section')
+        
         for key,val in data.items():
             if key == 'soft_skills':
                 resume_data['soft_skills'] = val
@@ -91,6 +98,18 @@ def update():
                 resume_data['skills']['technologies'] = val
             elif key == 'tools_edit':
                 resume_data['skills']['tools'] = val
+            elif section == "por":
+                resume_data['position_of_responsibility'][index-1][key] = val
+            elif section == "achievements":
+                resume_data['achievements'][index-1][key] = val
+            elif section == "education":
+                resume_data['education'][index-1][key] = val
+            elif section == "blogs":
+                resume_data['blogs'][index-1] = val
+            elif section == 'project':
+                resume_data['projects'][index-1][key] = val
+
+
             # with open(' resume_data.json','w') as file_object:
             #     json.dump(resume_data,file_object)
         ref.set(resume_data)

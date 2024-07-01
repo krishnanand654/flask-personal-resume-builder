@@ -1,1 +1,123 @@
-{"name": "Krishnanand A", "phone": "+91 9495434706", "city": "Kottayam", "state": "Kerala", "zip_code": "686102", "email": "krishnanand654@gmail.com", "linkedin": "linkedin.com/in/krishnanand-a-profile", "github": "github.com/krishnanand654", "website": "krishnanand-a.web.app", "medium": "medium.com/@krishnanand654", "objective": "I am a skilled software developer with a background in computer science and full-stack development, having hands-on experience in microservices and REST API frameworks, front-end development, databases, object-oriented programming (OOPs), and deployment, effectively manage these aspects using version control .", "education": [{"degree": "Master of Computer Applications", "university": "Saintgits College of Engineering", "location": "Kottayam, Kerala", "gpa": "8.9", "graduation": "2022-2024"}, {"degree": "Bachelor of Computer Applications", "university": "St. Berchman's College", "location": "Changanassery, Kerala", "gpa": "9.18", "graduation": "2019-2022"}], "projects": [{"title": "ResNet", "description": "Developed a solar-powered disaster network ensuring reliable communication during emergencies, fostering global community resilience.", "technologies": "React Native, SQLite, IoT, WebSockets, API", "date": "2024", "responsibilities": ["Designed and implemented a mobile application using React Native.", "Developed and managed the SQLite database for offline data storage.", "Built a communication server using IoT device (NodeMCU)", "Utilized WebSockets for real-time communication and API for backend services.", "Ensured robust and reliable communication infrastructure during emergencies."]}, {"title": "Document Manager", "description": "Developed a comprehensive document management system using Flask and SQLite3 to facilitate the upload, viewing, updating, and deletion of documents.", "technologies": "Flask, SQLite3, HTML, CSS, Flask-WTF", "responsibilities": ["Designed and developed an Android application using Android Studio and Java.", "Implemented Firebase for real-time data synchronization and storage.", "Created user interfaces and functionalities for students to access placement drive information.", "Developed features for placement coordinators to manage applictions and generate reports"], "date": "2024"}, {"title": "Gladius Schild CVE App", "description": "Built an app to collect CVE data from multiple NVD APIs, providing extensive data coverage for viewing and searching CVE information.", "technologies": "React JS, Express JS, MySQL", "date": "2023", "responsibilities": ["Developed a web application using React JS for the frontend.", "Implemented backend services using Express JS to handle API requests.", "Integrated multiple NVD APIs to collect CVE data.", "Designed and managed MySQL database for storing and querying CVE information.", "Created a user-friendly interface for viewing and searching CVE data."]}, {"title": "Placement Companion", "description": "Developed an Android app to connect students with placement drive information and assist placement coordinators in managing applicant data.", "technologies": "Android Studio, Java, Firebase", "date": "2023", "responsibilities": ["Implemented backend with Flask and SQLite3", "Developed RESTful APIs for CRUD operations.", "Created responsive UI with HTML, CSS, and JavaScript.", "Ensured secure user authentication and data validation."]}], "skills": {"languages": "Java, Python, JavaScript, HTML, CSS, C, C++, PHP", "technologies": "React.js, Vue.js, Express.js, Spring Boot, MySQL, MongoDB, Django, Flask, Android Studio, React Native, WebSockets, Firebase, Bootstrap, Tailwind", "tools": "Git, GitHub, Docker, Figma, Postman, Github Actions"}, "achievements": [{"title": "Web Designing Contest (Third Prize) - GitsBlitz", "date": "2024"}, {"title": "Completed Internship in React JS from NDZ Kochi", "date": "2023"}, {"title": "Web Designing Contest (First Prize) - Dignito 2k22", "date": "2022"}, {"title": "Codewars - 6kyu (Rank)", "date": "2022"}], "soft_skills": "Communication, Empathy, Organizing, Team Player", "blogs": ["How to solve the Recurrence Relation T(n) = 2T(n/2)+2 using Substitution method.", "How to build a Spring Boot Backend application in simple", "How to create a custom LinkedList in Java"], "position_of_responsibility": [{"title": "Served as a resource person for a two-day web-designing workshop aimed at +2 students as part of Vidhya Jyothi.", "date": "2024"}, {"title": "Chief FOSS Ambassador for Promoting Free and Open Source Software.", "date": "2024"}, {"title": "Event Head for the web-designing contest of SAMYUKTHA 7.0 - MCA Fest", "date": "2023"}]}
+{
+  "name": "Krishnanand A",
+  "phone": "+91 9495434706",
+  "city": "Kottayam",
+  "state": "Kerala",
+  "zip_code": "686102",
+  "email": "krishnanand654@gmail.com",
+  "linkedin": "linkedin.com/in/krishnanand-a-profile",
+  "github": "github.com/krishnanand654",
+  "website": "krishnanand-a.web.app",
+  "medium": "medium.com/@krishnanand654",
+  "objective": "I am a skilled software developer with a background in computer science and full-stack development, having hands-on experience in microservices and REST API frameworks, front-end development, databases, object-oriented programming (OOPs), and deployment, effectively manage these aspects using version control .",
+  "education": [
+    {
+      "college": "Saintgits College of Engineering",
+      "degree": "Master of Computer Applications",
+      "gpa": "8.9",
+      "graduation": "2022-2024",
+      "location": "Kottayam, Kerala",
+      "university": "KTU"
+    },
+    {
+      "college": "St. Berchman's College",
+      "degree": "Bachelor of Computer Applications",
+      "gpa": "9.18",
+      "graduation": "2019-2022",
+      "location": "Changanassery, Kerala",
+      "university": "MG University"
+    }
+  ],
+  "projects": [
+    {
+      "title": "ResNet",
+      "description": "Developed a solar-powered disaster network ensuring reliable communication during emergencies, fostering global community resilience.",
+      "technologies": "React Native, SQLite, IoT, WebSockets, API",
+      "date": "2024",
+      "responsibilities": [
+        "Designed and implemented a mobile application using React Native.",
+        "Developed and managed the SQLite database for offline data storage.",
+        "Built a communication server using IoT device (NodeMCU)",
+        "Utilized WebSockets for real-time communication and API for backend services.",
+        "Ensured robust and reliable communication infrastructure during emergencies."
+      ]
+    },
+    {
+      "title": "Document Manager",
+      "description": "Developed a comprehensive document management system using Flask and SQLite3 to facilitate the upload, viewing, updating, and deletion of documents.",
+      "technologies": "Flask, SQLite3, HTML, CSS, Flask-WTF",
+      "responsibilities": [
+        "Implemented backend with Flask and SQLite3",
+        "Developed RESTful APIs for CRUD operations.",
+        "Created responsive UI with HTML, CSS, and JavaScript.",
+        "Ensured secure user authentication and data validation."
+      ],
+      "date": "2024"
+    },
+    {
+      "title": "Gladius Schild CVE App",
+      "description": "Built an app to collect CVE data from multiple NVD APIs, providing extensive data coverage for viewing and searching CVE information.",
+      "technologies": "React JS, Express JS, MySQL",
+      "date": "2023",
+      "responsibilities": [
+        "Developed a web application using React JS for the frontend.",
+        "Implemented backend services using Express JS to handle API requests.",
+        "Integrated multiple NVD APIs to collect CVE data.",
+        "Designed and managed MySQL database for storing and querying CVE information.",
+        "Created a user-friendly interface for viewing and searching CVE data."
+      ]
+    },
+    {
+      "title": "Placement Companion",
+      "description": "Developed an Android app to connect students with placement drive information and assist placement coordinators in managing applicant data.",
+      "technologies": "Android Studio, Java, Firebase",
+      "date": "2023",
+      "responsibilities": [
+        "Designed and developed an Android application using Android Studio and Java.",
+        "Implemented Firebase for real-time data synchronization and storage.",
+        "Created user interfaces and functionalities for students to access placement drive information.",
+        "Developed features for placement coordinators to manage applictions and generate reports"
+      ]
+    }
+  ],
+  "skills": {
+    "languages": "Java, Python, JavaScript, HTML, CSS, C, C++, PHP",
+    "technologies": "React.js, Vue.js, Express.js, Spring Boot, MySQL, MongoDB, Django, Flask, Android Studio, React Native, WebSockets, Firebase, Bootstrap, Tailwind",
+    "tools": "Git, GitHub, Docker, Figma, Postman, Github Actions"
+  },
+  "achievements": [
+    {
+      "title": "Web Designing Contest (Third Prize) - GitsBlitz",
+      "date": "2024"
+    },
+    {
+      "title": "Completed Internship in React JS from NDZ Kochi",
+      "date": "2023"
+    },
+    {
+      "title": "Web Designing Contest (First Prize) - Dignito 2k22",
+      "date": "2022"
+    },
+    { "title": "Codewars - 6kyu (Rank)", "date": "2022" }
+  ],
+  "soft_skills": "Communication, Empathy, Organizing, Team Player",
+  "blogs": [
+    "How to solve the Recurrence Relation T(n) = 2T(n/2)+2 using Substitution method.",
+    "How to build a Spring Boot Backend application in simple",
+    "How to create a custom LinkedList in Java"
+  ],
+  "position_of_responsibility": [
+    {
+      "title": "Served as a resource person for a two-day web-designing workshop aimed at +2 students as part of Vidhya Jyothi.",
+      "date": "2024"
+    },
+    {
+      "title": "Chief FOSS Ambassador for Promoting Free and Open Source Software.",
+      "date": "2024"
+    },
+    {
+      "title": "Event Head for the web-designing contest of SAMYUKTHA 7.0 - MCA Fest",
+      "date": "2023"
+    }
+  ]
+}
