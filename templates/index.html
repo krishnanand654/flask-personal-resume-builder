@@ -63,13 +63,13 @@
       }
 
       ul {
-        list-style-type: none; /* Removes default list styles */
-        padding: 0; /* Removes default padding */
+        /* list-style-type: none;  */
+        padding: 0 0 0 20px; /* Removes default padding */
       }
-
+/* 
       li::before {
-        content: "- "; /* Custom marker */
-      }
+        content: "- "; 
+      } */
       .flex-container {
         display: flex;
         justify-content: space-between;
@@ -138,23 +138,25 @@
 
     <div class="section" id="project">
       <h3>Projects</h3>
-      {% for project in resume.projects %}
+      {% for project in resume.projects[0:] %}
       {% if two_page %}<div class="subsection project-subsection" > {% else %} <div class="subsection" >{% endif %}
         <div style="display: flex; justify-content: space-between">
           {% if two_page %}<h3 style="background: none; margin-bottom: 3px;">{{ project.title }} </h3> {% else %} <h4>{{ project.title }} </h4> {% endif %}
           <p>{{ project.date }}</p>
         </div>
-        <p style="width: 95%">
-          - {{ project.description }} 
-        </p>
-        <p><strong>Technologies:</strong> {{ project.technologies }}</p>
+        
+        <!-- <p><strong>Technologies:</strong> {{ project.technologies }}</p> -->
         {% if two_page %}
-        <p><strong>Key Responsibilities:</strong>
+        <p>
             <ul>
             {% for responsibility in  project.responsibilities %}
                 <li>{{ responsibility }}</li>
                 {% endfor %}
             </ul>
+        </p>
+        {% else %}
+        <p style="width: 95%">
+          {{ project.description }} 
         </p>
         {% endif %}
       

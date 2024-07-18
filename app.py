@@ -23,7 +23,7 @@ default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL':app.db_url
 	})
 
-ref=db.reference("/")
+ref=db.reference("/resume")
 
 login_manager = LoginManager(app)
 
